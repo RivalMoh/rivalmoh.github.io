@@ -1104,6 +1104,7 @@ footer .social-link:hover {
 .projects-container {
     position: relative;
     overflow: hidden;
+    width: 100%;
 }
 
 .projects-scroll-wrapper {
@@ -1113,6 +1114,7 @@ footer .social-link:hover {
     padding-bottom: 1rem;
     scrollbar-width: thin;
     scrollbar-color: #007bff #f1f1f1;
+    width: 100%;
 }
 
 .projects-scroll-wrapper::-webkit-scrollbar {
@@ -1134,15 +1136,18 @@ footer .social-link:hover {
 }
 
 .projects-horizontal-scroll {
-    display: flex;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
     gap: 2rem;
     padding: 1rem 0;
     width: fit-content;
+    min-width: 100%;
 }
 
 /* Enhanced Project Cards */
 .project-card {
-    flex: 0 0 350px;
+    flex: 0 0 350px !important;
     background: white;
     border-radius: 15px;
     overflow: hidden;
@@ -1152,6 +1157,8 @@ footer .social-link:hover {
     display: flex;
     flex-direction: column;
     height: 480px; /* Fixed height for consistent card sizes */
+    min-width: 350px;
+    width: 350px;
 }
 
 .project-card:hover {
@@ -1360,6 +1367,7 @@ footer .social-link:hover {
 .certifications-container {
     position: relative;
     margin-top: 2rem;
+    width: 100%;
 }
 
 .certifications-scroll-wrapper {
@@ -1368,6 +1376,7 @@ footer .social-link:hover {
     padding-bottom: 1rem;
     scrollbar-width: thin;
     scrollbar-color: #007bff #f8f9fa;
+    width: 100%;
 }
 
 .certifications-scroll-wrapper::-webkit-scrollbar {
@@ -1389,10 +1398,13 @@ footer .social-link:hover {
 }
 
 .certifications-horizontal-scroll {
-    display: flex;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
     gap: 1.5rem;
     padding: 1rem 0;
     width: fit-content;
+    min-width: 100%;
 }
 
 .certification-categories {
@@ -1404,8 +1416,9 @@ footer .social-link:hover {
 }
 
 .certifications-horizontal-scroll .certification-card {
-    flex: 0 0 300px;
-    min-width: 300px;
+    flex: 0 0 300px !important;
+    min-width: 300px !important;
+    width: 300px !important;
     background: white;
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);

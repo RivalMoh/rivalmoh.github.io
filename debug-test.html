@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Test</title>
+    <style>
+        .debug-info {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 5px;
+        }
+        .test-scroll {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            padding: 1rem;
+            background: #e9ecef;
+            margin: 20px;
+        }
+        .test-card {
+            flex: 0 0 300px;
+            min-width: 300px;
+            height: 200px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="debug-info">
+        <h2>Debug Information</h2>
+        <p>User Agent: <span id="userAgent"></span></p>
+        <p>Current URL: <span id="currentUrl"></span></p>
+        <p>Screen Width: <span id="screenWidth"></span></p>
+        <p>CSS Support: <span id="cssSupport"></span></p>
+        <p>JavaScript Status: <span id="jsStatus">Loading...</span></p>
+    </div>
+
+    <div class="debug-info">
+        <h3>Test Horizontal Scroll</h3>
+        <div class="test-scroll">
+            <div class="test-card">Card 1</div>
+            <div class="test-card">Card 2</div>
+            <div class="test-card">Card 3</div>
+            <div class="test-card">Card 4</div>
+            <div class="test-card">Card 5</div>
+        </div>
+    </div>
+
+    <script>
+        // Basic debugging information
+        document.getElementById('userAgent').textContent = navigator.userAgent;
+        document.getElementById('currentUrl').textContent = window.location.href;
+        document.getElementById('screenWidth').textContent = window.innerWidth + 'px';
+        document.getElementById('cssSupport').textContent = 'CSS Grid: ' + (CSS.supports('display', 'grid') ? 'Yes' : 'No') + ', Flexbox: ' + (CSS.supports('display', 'flex') ? 'Yes' : 'No');
+        document.getElementById('jsStatus').textContent = 'JavaScript is working!';
+
+        // Test console logging
+        console.log('Debug page loaded successfully');
+        console.log('Window width:', window.innerWidth);
+        console.log('CSS support test:', {
+            flexbox: CSS.supports('display', 'flex'),
+            grid: CSS.supports('display', 'grid')
+        });
+
+        // Test loading external resources
+        console.log('Testing resource loading...');
+        
+        // Check if CSS files are loaded
+        const cssFiles = Array.from(document.styleSheets).map(sheet => {
+            try {
+                return sheet.href || 'inline';
+            } catch (e) {
+                return 'error accessing stylesheet';
+            }
+        });
+        console.log('CSS files loaded:', cssFiles);
+    </script>
+</body>
+</html>
