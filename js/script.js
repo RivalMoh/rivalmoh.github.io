@@ -375,3 +375,136 @@ const debouncedScrollHandler = debounce(() => {
 window.addEventListener('scroll', debouncedScrollHandler);
 
 console.log('Portfolio website loaded successfully! 🚀');
+
+// Certification filtering functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const certificationButtons = document.querySelectorAll('.certification-categories .btn-category');
+    const certificationCards = document.querySelectorAll('#certificationsContainer .certification-card');
+    
+    certificationButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const category = this.getAttribute('data-category');
+            
+            // Remove active class from all buttons
+            certificationButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Add active class to clicked button
+            this.classList.add('active');
+            
+            // Filter certification cards
+            certificationCards.forEach(card => {
+                const cardCategory = card.getAttribute('data-category');
+                
+                if (category === 'all' || cardCategory === category) {
+                    card.style.display = 'block';
+                    card.style.opacity = '0';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                    }, 50);
+                } else {
+                    card.style.opacity = '0';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
+                }
+            });
+            
+            // Recalculate scroll container width after filtering
+            setTimeout(() => {
+                updateScrollContainerWidth();
+            }, 350);
+        });
+    });
+    
+    // Initialize scroll container width
+    updateScrollContainerWidth();
+});
+
+// Function to update scroll container width and prevent overscrolling
+function updateScrollContainerWidth() {
+    const projectsContainer = document.getElementById('projectsContainer');
+    const certificationsContainer = document.getElementById('certificationsContainer');
+    
+    if (projectsContainer) {
+        const visibleProjectCards = Array.from(projectsContainer.children).filter(card => 
+            card.style.display !== 'none'
+        );
+        updateContainerWidth(projectsContainer, visibleProjectCards);
+    }
+    
+    if (certificationsContainer) {
+        const visibleCertificationCards = Array.from(certificationsContainer.children).filter(card => 
+            card.style.display !== 'none'
+        );
+        updateContainerWidth(certificationsContainer, visibleCertificationCards);
+    }
+}
+
+// Helper function to update container width
+function updateContainerWidth(container, visibleCards) {
+    if (visibleCards.length === 0) return;
+    
+    const cardWidth = visibleCards[0].offsetWidth;
+    const gap = parseFloat(getComputedStyle(container).gap) || 0;
+    const totalWidth = (cardWidth * visibleCards.length) + (gap * (visibleCards.length - 1));
+    
+    container.style.width = totalWidth + 'px';
+    
+    // Check if scrolling is needed
+    const scrollWrapper = container.parentElement;
+    const wrapperWidth = scrollWrapper.offsetWidth;
+    
+    if (totalWidth <= wrapperWidth) {
+        // No scrolling needed, center the content
+        container.style.justifyContent = 'center';
+    } else {
+        // Scrolling needed, align to start
+        container.style.justifyContent = 'flex-start';
+    }
+}
+
+// Update container widths on window resize
+window.addEventListener('resize', function() {
+    updateScrollContainerWidth();
+});
+
+// Enhanced project filtering with proper scroll handling
+document.addEventListener('DOMContentLoaded', function() {
+    const projectButtons = document.querySelectorAll('.project-categories .btn-category');
+    const projectCards = document.querySelectorAll('#projectsContainer .project-card');
+    
+    projectButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const category = this.getAttribute('data-category');
+            
+            // Remove active class from all buttons
+            projectButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Add active class to clicked button
+            this.classList.add('active');
+            
+            // Filter project cards
+            projectCards.forEach(card => {
+                const cardCategory = card.getAttribute('data-category');
+                
+                if (category === 'all' || cardCategory === category) {
+                    card.style.display = 'block';
+                    card.style.opacity = '0';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                    }, 50);
+                } else {
+                    card.style.opacity = '0';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
+                }
+            });
+            
+            // Recalculate scroll container width after filtering
+            setTimeout(() => {
+                updateScrollContainerWidth();
+            }, 350);
+        });
+    });
+});
