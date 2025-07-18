@@ -107,9 +107,36 @@ html {
 }
 
 .project-content p {
-    color: #555;
-    line-height: 1.8;
-    margin-bottom: 1.5rem;
+    color: #333 !important;
+    line-height: 1.8 !important;
+    margin-bottom: 1.5rem !important;
+    font-size: 1rem !important;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    background-color: transparent !important;
+    text-shadow: none !important;
+    font-weight: 400 !important;
+    user-select: text !important;
+}
+
+.project-overview-text,
+.technical-details-text,
+.results-text {
+    color: #333 !important;
+    line-height: 1.8 !important;
+    margin-bottom: 1.5rem !important;
+    font-size: 1rem !important;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    background-color: transparent !important;
+    text-shadow: none !important;
+    font-weight: 400 !important;
+    user-select: text !important;
+    -webkit-user-select: text !important;
+    -moz-user-select: text !important;
+    -ms-user-select: text !important;
 }
 
 .feature-list {
@@ -544,12 +571,6 @@ html {
     font-weight: 600;
     margin-bottom: 15px;
     color: #2c3e50;
-}
-
-.project-content p {
-    color: #6c757d;
-    margin-bottom: 20px;
-    line-height: 1.6;
 }
 
 .project-tech {
@@ -1252,20 +1273,6 @@ footer .social-link:hover {
     -webkit-box-orient: vertical;
 }
 
-.project-content p {
-    color: #6c757d;
-    font-size: 0.9rem;
-    line-height: 1.6;
-    margin-bottom: 1rem;
-    flex-grow: 1;
-    height: 4.8rem; /* Fixed height for description */
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    line-clamp: 3;
-    -webkit-box-orient: vertical;
-}
-
 .project-tech {
     display: flex;
     flex-wrap: wrap;
@@ -1300,11 +1307,6 @@ footer .social-link:hover {
     .project-content h5 {
         font-size: 1.1rem;
         height: 2.4rem;
-    }
-    
-    .project-content p {
-        height: 4.2rem;
-        font-size: 0.85rem;
     }
     
     .btn-category {

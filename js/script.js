@@ -43,6 +43,44 @@ function initializePortfolio() {
     console.log('Portfolio initialization complete!');
 }
 
+// Dynamic project rendering (if projects data is available)
+function renderProjects(projects = null) {
+    if (typeof ProjectManager === 'undefined') {
+        console.log('ProjectManager not found, using static projects');
+        return;
+    }
+    
+    const projectsContainer = document.getElementById('projectsContainer');
+    if (!projectsContainer) return;
+    
+    const projectsToRender = projects || ProjectManager.getAllProjects();
+    
+    projectsContainer.innerHTML = projectsToRender.map(project => `
+        <div class="project-card" data-category="${project.category}">
+            <div class="project-image">
+                <img src="${project.image}" alt="${project.title}" class="img-fluid" 
+                     onerror="this.src='${project.fallbackImage}'">
+                <div class="project-overlay">
+                    <div class="project-links">
+                        <a href="projects/${project.id}.html" class="project-link"><i class="fas fa-eye"></i></a>
+                        <a href="${project.githubUrl}" class="project-link" target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-content">
+                <h5>${project.title}</h5>
+                <p>${project.shortDescription}</p>
+                <div class="project-tech">
+                    ${project.technologies.slice(0, 4).map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+                </div>
+            </div>
+        </div>
+    `).join('');
+    
+    // Update scroll container width after rendering
+    setTimeout(updateScrollContainerWidth, 100);
+}
+
 function initializeProjectFiltering() {
     const projectButtons = document.querySelectorAll('.project-categories .btn-category');
     const projectCards = document.querySelectorAll('#projectsContainer .project-card');
