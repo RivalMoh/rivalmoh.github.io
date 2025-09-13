@@ -3,10 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rival Moh. Wahyudi - Data & Machine Learning Enthusiast</title>
+    <title>Rival Moh. Wahyudi - Data Science & Machine Learning Portfolio</title>
+    
+    <!-- Meta Tags for SEO -->
+    <meta name="description" content="Professional portfolio of Rival Moh. Wahyudi - Data Science and Machine Learning enthusiast specializing in predictive modeling, data analysis, and AI solutions.">
+    <meta name="keywords" content="data science, machine learning, python, portfolio, data analysis, AI, predictive modeling">
+    <meta name="author" content="Rival Moh. Wahyudi">
+    <meta property="og:title" content="Rival Moh. Wahyudi - Data Science Portfolio">
+    <meta property="og:description" content="Professional portfolio showcasing data science and machine learning projects">
+    <meta property="og:type" content="website">
+    <meta name="robots" content="index, follow">
+
+    <!-- Preload Critical Resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style">
 
     <!-- jQuery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
     
     <!-- Bootstrap CSS -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -15,7 +29,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Custom CSS -->
     <link href="css/style.css" rel="stylesheet">
@@ -24,18 +38,33 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
-    <!-- Navigation -->
+    <!-- 
+    ==============================================
+    NAVIGATION SECTION
+    ==============================================
+    Fixed navigation bar that stays at the top of the page
+    Uses Bootstrap's navbar component with responsive collapse
+    Features smooth scrolling to different sections
+    ==============================================
+    -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
+            <!-- Logo/Brand - Links to home section -->
             <a class="navbar-brand fw-bold" href="#home">
-                <i class="fas fa-chart-line me-2"></i>
-                <span>Rival Moh. Wahyudi</span>
+                <!-- Optional icon (commented out) -->
+                <!-- <i class="fas fa-chart-line me-2"></i> -->
+                <span>My Portfolio</span>
             </a>
+            
+            <!-- Mobile hamburger menu button - only visible on small screens -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            
+            <!-- Navigation menu - collapses on mobile devices -->
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto"> <!-- ms-auto pushes menu to the right -->
+                    <!-- Each nav item links to a corresponding section using anchor links -->
                     <li class="nav-item">
                         <a class="nav-link" href="#home">Home</a>
                     </li>
@@ -46,10 +75,10 @@
                         <a class="nav-link" href="#skills">Skills</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#projects">Projects</a>
+                        <a class="nav-link" href="#experience">Experience</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#experience">Experience</a>
+                        <a class="nav-link" href="#projects">Projects</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#certifications">Certifications</a>
@@ -62,32 +91,50 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- 
+    ==============================================
+    HERO SECTION
+    ==============================================
+    First section visitors see - creates strong first impression
+    Features gradient background, personal introduction, and CTA buttons
+    Uses AOS animations for smooth entrance effects
+    Two-column layout: text content on left, profile image on right
+    ==============================================
+    -->
     <section id="home" class="hero-section mt-5">
         <div class="container">
+            <!-- Full viewport height row with centered content -->
             <div class="row align-items-center min-vh-100">
+                <!-- Left column: Text content with slide-in animation from right -->
                 <div class="col-lg-6" data-aos="fade-right">
+                    <!-- Main heading with large, bold typography -->
                     <h1 class="display-4 fw-bold mb-3">
                         Hi, I'm Rival Moh. Wahyudi
                     </h1>
+                    <!-- Subtitle describing profession/focus -->
                     <h2 class="h3 mb-4 text-light opacity-75">Data & Machine Learning Enthusiast</h2>
+                    <!-- Description paragraph explaining background and goals -->
                     <p class="lead mb-4">
                         A passionate data and machine learning enthusiast who wants to keep learning and make impact through data-driven solutions. I focus on building machine learning models and performing comprehensive data analysis to solve real-world problems.
                     </p>
+                    
+                    <!-- Call-to-action buttons -->
                     <div class="d-flex gap-3">
+                        <!-- Primary CTA: Contact button -->
                         <a href="#contact" class="btn btn-primary btn-lg">
                             <i class="fas fa-envelope me-2"></i>
                             <span>Get In Touch</span>
                         </a>
+                        <!-- Secondary CTA: View projects button -->
                         <a href="#projects" class="btn btn-outline-primary btn-lg ml-2">
                             <i class="fas fa-folder-open me-2"></i>
                             <span>View Projects</span>
                         </a>
                     </div>
+                    
+                    <!-- Social media links -->
                     <div class="social-links mt-4">
-                        <a href="https://wa.me/6289522687650" class="social-link" title="WhatsApp">
-                            <i class="fab fa-whatsapp"></i>
-                        </a>
+                        <!-- Professional social media links with tooltips -->
                         <a href="https://linkedin.com/in/rivalmohwahyudi/" class="social-link" title="LinkedIn">
                             <i class="fab fa-linkedin"></i>
                         </a>
@@ -99,13 +146,18 @@
                         </a>
                     </div>
                 </div>
+                
+                <!-- Right column: Profile image with slide-in animation from left -->
                 <div class="col-lg-6" data-aos="fade-left">
                     <div class="hero-image">
+                        <!-- Professional profile photo with circular crop and shadow -->
                         <img src="images/profile.jpeg" alt="Profile" class="img-fluid rounded-circle shadow-lg">
                     </div>
                 </div>
             </div>
         </div>
+        
+        <!-- Scroll indicator: encourages users to scroll down -->
         <div class="scroll-indicator">
             <a href="#about" class="scroll-down">
                 <i class="fas fa-chevron-down"></i>
@@ -113,9 +165,18 @@
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- 
+    ==============================================
+    ABOUT SECTION
+    ==============================================
+    Provides detailed background information and statistics
+    Two-column layout: biographical content and achievement stats
+    Features animated number counters and info items
+    ==============================================
+    -->
     <section id="about" class="py-5">
         <div class="container">
+            <!-- Section header with title and subtitle -->
             <div class="row">
                 <div class="col-lg-12 text-center mb-5" data-aos="fade-up">
                     <h2 class="section-title">About Me</h2>
@@ -188,16 +249,30 @@
         </div>
     </section>
 
-    <!-- Skills Section -->
+    <!-- 
+    ==============================================
+    SKILLS & TECHNOLOGIES SECTION
+    ==============================================
+    Displays technical skills organized by category
+    - Machine Learning & AI tools
+    - Programming languages
+    - Data analysis tools  
+    - Development & deployment platforms
+    Uses AOS animations for smooth reveal effects
+    ============================================== 
+    -->
     <section id="skills" class="py-5 bg-light">
         <div class="container">
+            <!-- Section header with title and description -->
             <div class="row">
                 <div class="col-lg-12 text-center mb-5" data-aos="fade-up">
                     <h2 class="section-title">Skills & Technologies</h2>
                     <p class="section-subtitle">Tools and technologies I work with</p>
                 </div>
             </div>
+            <!-- Skills categories grid layout -->
             <div class="row">
+                <!-- Machine Learning & AI Category -->
                 <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
                     <div class="skill-category">
                         <div class="skill-icon">
@@ -258,9 +333,20 @@
         </div>
     </section>
 
-    <!-- Experience Section -->
+    <!-- 
+    ==============================================
+    EXPERIENCE SECTION
+    ==============================================
+    Professional work experience timeline
+    - Company positions and roles
+    - Key responsibilities and achievements
+    - Duration and employment details
+    Uses timeline layout with animated reveals
+    ============================================== 
+    -->
     <section id="experience" class="py-5">
         <div class="container">
+            <!-- Section header -->
             <div class="row">
                 <div class="col-lg-12 text-center mb-5" data-aos="fade-up">
                     <h2 class="section-title">Experience</h2>
@@ -321,7 +407,17 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
+    <!-- 
+    ==============================================
+    PROJECTS SECTION
+    ==============================================
+    Portfolio project showcase with filtering system
+    - Interactive category filters (All, ML, Data Analysis)
+    - Project cards with descriptions and links
+    - Responsive grid layout with smooth animations
+    - Links to live demos and GitHub repositories
+    ============================================== 
+    -->
     <section id="projects" class="py-5">
         <div class="container">
             <div class="row">
@@ -358,11 +454,11 @@
                         <!-- Machine Learning Projects -->
                         <div class="project-card" data-category="machine-learning">
                             <div class="project-image">
-                                <img src="images/project1.jpg" alt="Project 1" class="img-fluid">
+                                <img src="images/project_placeholder.jpg" alt="Sales Prediction Model" class="img-fluid">
                                 <div class="project-overlay">
                                     <div class="project-links">
-                                        <a href="projects/sales-prediction.html" class="project-link"><i class="fas fa-eye"></i></a>
-                                        <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                                        <a href="projects/sales-prediction.html" class="project-link" title="View Project"><i class="fas fa-eye"></i></a>
+                                        <a href="#" class="project-link" title="View Code"><i class="fab fa-github"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -380,11 +476,11 @@
                         
                         <div class="project-card" data-category="data-analysis">
                             <div class="project-image">
-                                <img src="images/project2.jpg" alt="Project 2" class="img-fluid">
+                                <img src="images/project_placeholder.jpg" alt="Customer Behavior Analysis" class="img-fluid">
                                 <div class="project-overlay">
                                     <div class="project-links">
-                                        <a href="projects/customer-behavior.html" class="project-link"><i class="fas fa-eye"></i></a>
-                                        <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                                        <a href="projects/customer-behavior.html" class="project-link" title="View Project"><i class="fas fa-eye"></i></a>
+                                        <a href="#" class="project-link" title="View Code"><i class="fab fa-github"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -402,11 +498,11 @@
                         
                         <div class="project-card" data-category="machine-learning">
                             <div class="project-image">
-                                <img src="images/project3.jpg" alt="Project 3" class="img-fluid">
+                                <img src="images/project_placeholder.jpg" alt="Sentiment Analysis Tool" class="img-fluid">
                                 <div class="project-overlay">
                                     <div class="project-links">
-                                        <a href="projects/sentiment-analysis.html" class="project-link"><i class="fas fa-eye"></i></a>
-                                        <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                                        <a href="projects/sentiment-analysis.html" class="project-link" title="View Project"><i class="fas fa-eye"></i></a>
+                                        <a href="#" class="project-link" title="View Code"><i class="fab fa-github"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -424,11 +520,11 @@
                         
                         <div class="project-card" data-category="data-analysis">
                             <div class="project-image">
-                                <img src="images/project4.jpg" alt="Project 4" class="img-fluid">
+                                <img src="images/project_placeholder.jpg" alt="Market Data Analysis" class="img-fluid">
                                 <div class="project-overlay">
                                     <div class="project-links">
-                                        <a href="projects/market-analysis.html" class="project-link"><i class="fas fa-eye"></i></a>
-                                        <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                                        <a href="projects/market-analysis.html" class="project-link" title="View Project"><i class="fas fa-eye"></i></a>
+                                        <a href="#" class="project-link" title="View Code"><i class="fab fa-github"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -446,11 +542,11 @@
                         
                         <div class="project-card" data-category="machine-learning">
                             <div class="project-image">
-                                <img src="images/project5.jpg" alt="Project 5" class="img-fluid">
+                                <img src="images/project_placeholder.jpg" alt="Classification Model" class="img-fluid">
                                 <div class="project-overlay">
                                     <div class="project-links">
-                                        <a href="projects/classification-model.html" class="project-link"><i class="fas fa-eye"></i></a>
-                                        <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                                        <a href="projects/classification-model.html" class="project-link" title="View Project"><i class="fas fa-eye"></i></a>
+                                        <a href="#" class="project-link" title="View Code"><i class="fab fa-github"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -468,11 +564,11 @@
                         
                         <div class="project-card" data-category="data-analysis">
                             <div class="project-image">
-                                <img src="images/project6.jpg" alt="Project 6" class="img-fluid">
+                                <img src="images/project_placeholder.jpg" alt="Data Visualization Dashboard" class="img-fluid">
                                 <div class="project-overlay">
                                     <div class="project-links">
-                                        <a href="projects/data-dashboard.html" class="project-link"><i class="fas fa-eye"></i></a>
-                                        <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                                        <a href="projects/data-dashboard.html" class="project-link" title="View Project"><i class="fas fa-eye"></i></a>
+                                        <a href="#" class="project-link" title="View Code"><i class="fab fa-github"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -491,11 +587,11 @@
                         <!-- Additional Projects for demonstration -->
                         <div class="project-card" data-category="machine-learning">
                             <div class="project-image">
-                                <img src="images/project7.jpg" alt="Project 7" class="img-fluid">
+                                <img src="images/project_placeholder.jpg" alt="Image Recognition AI" class="img-fluid">
                                 <div class="project-overlay">
                                     <div class="project-links">
-                                        <a href="#" class="project-link"><i class="fas fa-eye"></i></a>
-                                        <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                                        <a href="#" class="project-link" title="View Project"><i class="fas fa-eye"></i></a>
+                                        <a href="#" class="project-link" title="View Code"><i class="fab fa-github"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -513,11 +609,11 @@
                         
                         <div class="project-card" data-category="data-analysis">
                             <div class="project-image">
-                                <img src="images/project8.jpg" alt="Project 8" class="img-fluid">
+                                <img src="images/project_placeholder.jpg" alt="Financial Data Analytics" class="img-fluid">
                                 <div class="project-overlay">
                                     <div class="project-links">
-                                        <a href="#" class="project-link"><i class="fas fa-eye"></i></a>
-                                        <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                                        <a href="#" class="project-link" title="View Project"><i class="fas fa-eye"></i></a>
+                                        <a href="#" class="project-link" title="View Code"><i class="fab fa-github"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -724,47 +820,8 @@
                     <p class="section-subtitle">Let's connect and discuss data science opportunities</p>
                 </div>
             </div>
-            <!--
             <div class="row">
-                <div class="col-lg-8 mx-auto">
-                    <div class="contact-form" data-aos="fade-up">
-                        <form id="contactForm">
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <input type="text" class="form-control" placeholder="Your Name" required>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <input type="email" class="form-control" placeholder="Your Email" required>
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <input type="text" class="form-control" placeholder="Subject" required>
-                            </div>
-                            <div class="mb-3">
-                                <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
-                            </div>
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-primary btn-lg">
-                                    <i class="fas fa-paper-plane me-2"></i>Send Message
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            -->
-            <div class="row">
-                <div class="col-lg-4 text-center mb-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="contact-info">
-                        <div class="contact-icon">
-                            <i class="fab fa-whatsapp"></i>
-                        </div>
-                        <h5>WhatsApp</h5>
-                        <p>+62 895-2268-7650</p>
-                        <a href="https://wa.me/6289522687650" class="btn btn-outline-primary btn-sm">Message on WhatsApp</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 text-center mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="col-lg-6 text-center mb-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="contact-info">
                         <div class="contact-icon">
                             <i class="fab fa-linkedin"></i>
@@ -774,7 +831,7 @@
                         <a href="https://linkedin.com/in/rivalmohwahyudi/" class="btn btn-outline-primary btn-sm">View LinkedIn</a>
                     </div>
                 </div>
-                <div class="col-lg-4 text-center mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="col-lg-6 text-center mb-4" data-aos="fade-up" data-aos-delay="300">
                     <div class="contact-info">
                         <div class="contact-icon">
                             <i class="fab fa-github"></i>
@@ -819,7 +876,6 @@
                 </div>
                 <div class="col-md-6 text-md-end">
                     <div class="social-links">
-                        <a href="https://wa.me/6289522687650" class="social-link"><i class="fab fa-whatsapp"></i></a>
                         <a href="https://linkedin.com/in/rivalmohwahyudi/" class="social-link"><i class="fab fa-linkedin"></i></a>
                         <a href="https://github.com/RivalMoh" class="social-link"><i class="fab fa-github"></i></a>
                         <a href="https://instagram.com/rival_wahyudi.m" class="social-link"><i class="fab fa-instagram"></i></a>
@@ -828,6 +884,14 @@
             </div>
         </div>
     </footer>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar"></div>
 
     <!-- Bootstrap JS -->
     <script src="bootstrap/js/bootstrap.bundle.min.js"></script>

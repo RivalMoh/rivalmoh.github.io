@@ -1,46 +1,303 @@
-// Custom JavaScript for Portfolio
+/*
+==============================================
+PORTFOLIO WEBSITE - JAVASCRIPT
+==============================================
+Modern, interactive features for portfolio website
+Author: Rival Moh. Wahyudi
+Features: Project filtering, smooth scrolling, navigation highlighting, 
+          responsive galleries, and professional UI enhancements
+==============================================
+*/
 
-// Wait for DOM to be fully loaded
+/*
+==============================================
+INITIALIZATION SYSTEM
+==============================================
+Main entry point that sets up all interactive features
+Waits for DOM to be ready before initializing components
+==============================================
+*/
+
+// Wait for DOM to be fully loaded before running any JavaScript
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM Content Loaded - Starting Portfolio initialization...');
     
-    // Initialize AOS (Animate On Scroll) only if it's available
+    /*
+    Initialize AOS (Animate On Scroll) library
+    Provides smooth, scroll-triggered animations throughout the site
+    Only initialize if the library is available (graceful degradation)
+    */
     if (typeof AOS !== 'undefined') {
         console.log('AOS library found, initializing...');
         AOS.init({
-            duration: 1000,
-            easing: 'ease-in-out',
-            once: true,
-            mirror: false
+            duration: 800,          // Animation duration in milliseconds
+            easing: 'ease-out-cubic', // Smooth easing function for natural movement
+            once: true,             // Animate elements only once (performance optimization)
+            mirror: false,          // Don't reverse animations when scrolling up
+            offset: 50              // Trigger animations 50px before element enters viewport
         });
     } else {
         console.log('AOS library not found, skipping animation initialization');
     }
     
-    // Initialize all functionality
+    // Initialize all portfolio functionality
     initializePortfolio();
 });
 
+/*
+==============================================
+MAIN INITIALIZATION FUNCTION
+==============================================
+Coordinates the initialization of all interactive features
+Called after DOM is ready and AOS is initialized
+==============================================
+*/
 function initializePortfolio() {
     console.log('Initializing portfolio functionality...');
     
-    // Initialize project filtering
+    // Initialize modern navigation with scroll effects
+    initializeModernNavigation();
+    
+    // Initialize project filtering system for project gallery
     initializeProjectFiltering();
     
-    // Initialize certification filtering
+    // Initialize certification filtering system
     initializeCertificationFiltering();
     
-    // Initialize scroll container width
+    // Initialize horizontal scroll container widths (with delay for proper calculation)
     setTimeout(() => {
         updateScrollContainerWidth();
     }, 100);
     
-    // Initialize other functionality
-    initializeNavigation();
+    // Initialize smooth scrolling for navigation links
+    initializeSmoothScrolling();
+    
+    // Initialize intersection observer for navigation highlighting
+    initializeNavHighlighting();
+    
+    // Initialize contact form functionality
     initializeContactForm();
-    initializeEffects();
+    
+    // Initialize modern effects
+    initializeModernEffects();
+    
+    // Initialize scroll to top button
+    initializeScrollToTop();
+    
+    // Initialize reading progress bar
+    initializeProgressBar();
     
     console.log('Portfolio initialization complete!');
+}
+
+// Modern Navigation with scroll effects
+function initializeModernNavigation() {
+    const navbar = document.querySelector('.navbar');
+    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+    
+    // Add scroll effect to navbar
+    let lastScrollTop = 0;
+    
+    window.addEventListener('scroll', function() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        // Add/remove scrolled class
+        if (scrollTop > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+        
+        lastScrollTop = scrollTop;
+    });
+    
+    // Add active state to nav links
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            navLinks.forEach(l => l.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+}
+
+/*
+==============================================
+SCROLL-TO-TOP BUTTON
+==============================================
+Creates and manages a floating scroll-to-top button
+Shows when user scrolls down, provides smooth return to top
+==============================================
+*/
+function initializeScrollToTop() {
+    // Create scroll to top button element
+    const scrollButton = document.createElement('button');
+    scrollButton.className = 'scroll-to-top';
+    scrollButton.innerHTML = '<i class="fas fa-chevron-up"></i>';
+    scrollButton.setAttribute('aria-label', 'Scroll to top');
+    document.body.appendChild(scrollButton);
+    
+    // Show/hide button based on scroll position
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            scrollButton.classList.add('visible');   // Show button after scrolling 300px
+        } else {
+            scrollButton.classList.remove('visible'); // Hide button when near top
+        }
+    });
+    
+    // Scroll to top when clicked with smooth animation
+    scrollButton.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}
+
+/*
+==============================================
+READING PROGRESS BAR
+==============================================
+Shows visual progress indicator of page scroll
+Helps users understand how much content remains
+==============================================
+*/
+function initializeProgressBar() {
+    // Create progress bar element at top of page
+    const progressBar = document.createElement('div');
+    progressBar.className = 'progress-bar';
+    document.body.appendChild(progressBar);
+    
+    // Update progress width based on scroll position
+    window.addEventListener('scroll', function() {
+        const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = (window.pageYOffset / totalHeight) * 100;
+        progressBar.style.width = progress + '%';
+    });
+}
+
+/*
+==============================================
+SMOOTH SCROLLING NAVIGATION
+==============================================
+Provides smooth animated scrolling for anchor links
+Accounts for fixed navbar height in positioning
+==============================================
+*/
+function initializeSmoothScrolling() {
+    // Get all internal anchor links
+    const links = document.querySelectorAll('a[href^="#"]');
+    
+    // Add smooth scroll behavior to each link
+    links.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault(); // Prevent default anchor jump behavior
+            
+            // Get target section ID from href
+            const targetId = this.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
+            
+            // Scroll to section if it exists
+            if (targetSection) {
+                const offsetTop = targetSection.offsetTop - 80; // Account for fixed navbar
+                
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+}
+
+/*
+==============================================
+NAVIGATION HIGHLIGHTING
+==============================================
+Automatically highlights active navigation link based on scroll position
+Uses Intersection Observer for performance and accuracy
+==============================================
+*/
+function initializeNavHighlighting() {
+    // Get all sections with IDs and navigation links
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+    
+    // Create intersection observer to track visible sections
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const sectionId = entry.target.id;
+                
+                // Remove active class from all nav links
+                navLinks.forEach(link => link.classList.remove('active'));
+                
+                // Add active class to corresponding nav link
+                const activeLink = document.querySelector(`.navbar-nav .nav-link[href="#${sectionId}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
+            }
+        });
+    }, {
+        threshold: 0.3,              // Trigger when 30% of section is visible
+        rootMargin: '-80px 0px -50% 0px'  // Account for navbar height
+    });
+    
+    // Observe all sections for visibility changes
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+}
+
+/*
+==============================================
+MODERN EFFECTS & MICRO-INTERACTIONS
+==============================================
+Adds sophisticated visual effects and small interactive details
+Enhances user experience with subtle animations
+==============================================
+*/
+function initializeModernEffects() {
+    // Add loading animation to images
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {
+        img.addEventListener('load', function() {
+            this.style.opacity = '1';
+        });
+        
+        // Set initial opacity
+        if (img.complete) {
+            img.style.opacity = '1';
+        } else {
+            img.style.opacity = '0';
+            img.style.transition = 'opacity 0.3s ease';
+        }
+    });
+    
+    // Add hover effects to buttons
+    const buttons = document.querySelectorAll('.btn');
+    buttons.forEach(btn => {
+        btn.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-2px)';
+        });
+        
+        btn.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+        });
+    });
+    
+    // Add parallax effect to hero section
+    const heroSection = document.querySelector('.hero-section');
+    if (heroSection) {
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const parallax = heroSection.querySelector('.hero-section::before');
+            if (parallax) {
+                parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+    }
 }
 
 // Dynamic project rendering (if projects data is available)
@@ -81,38 +338,51 @@ function renderProjects(projects = null) {
     setTimeout(updateScrollContainerWidth, 100);
 }
 
+/*
+==============================================
+PROJECT FILTERING SYSTEM
+==============================================
+Interactive filtering system for project gallery
+Allows users to filter projects by category (All, ML, Data Analysis)
+Includes smooth animations and button state management
+==============================================
+*/
 function initializeProjectFiltering() {
+    // Get filter buttons and project cards from DOM
     const projectButtons = document.querySelectorAll('.project-categories .btn-category');
     const projectCards = document.querySelectorAll('#projectsContainer .project-card');
     
+    // Log found elements for debugging
     console.log('Project buttons found:', projectButtons.length);
     console.log('Project cards found:', projectCards.length);
     
+    // Exit if required elements are not found
     if (projectButtons.length === 0 || projectCards.length === 0) {
         console.log('Project filtering elements not found');
         return;
     }
     
+    // Add click event listeners to filter buttons
     projectButtons.forEach(button => {
         button.addEventListener('click', function() {
+            // Get the category to filter by from data attribute
             const category = this.getAttribute('data-category');
             console.log('Filtering projects by category:', category);
             
-            // Remove active class from all buttons
+            // Update button states (remove active class from all, add to clicked)
             projectButtons.forEach(btn => btn.classList.remove('active'));
-            
-            // Add active class to clicked button
             this.classList.add('active');
             
-            // Filter project cards
+            // Filter project cards with smooth animations
             projectCards.forEach(card => {
                 const cardCategory = card.getAttribute('data-category');
                 
+                // Show cards that match the selected category (or all)
                 if (category === 'all' || cardCategory === category) {
-                    card.style.display = 'block';
-                    card.style.opacity = '0';
+                    card.style.display = 'block';        // Make card visible
+                    card.style.opacity = '0';            // Start with invisible
                     setTimeout(() => {
-                        card.style.opacity = '1';
+                        card.style.opacity = '1';        // Fade in with delay
                     }, 50);
                 } else {
                     card.style.opacity = '0';
@@ -393,13 +663,68 @@ function debounce(func, wait) {
     };
 }
 
+// Initialize scroll-to-top button
+function initializeScrollToTop() {
+    // Create scroll to top button if it doesn't exist
+    if (!document.querySelector('.scroll-to-top')) {
+        const scrollButton = document.createElement('button');
+        scrollButton.className = 'scroll-to-top';
+        scrollButton.innerHTML = '<i class="fas fa-arrow-up"></i>';
+        scrollButton.setAttribute('aria-label', 'Scroll to top');
+        document.body.appendChild(scrollButton);
+        
+        scrollButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+    
+    // Show/hide scroll to top button based on scroll position
+    window.addEventListener('scroll', () => {
+        const scrollButton = document.querySelector('.scroll-to-top');
+        if (scrollButton) {
+            if (window.pageYOffset > 300) {
+                scrollButton.classList.add('visible');
+            } else {
+                scrollButton.classList.remove('visible');
+            }
+        }
+    });
+}
+
+// Initialize progress bar
+function initializeProgressBar() {
+    // Create progress bar if it doesn't exist
+    if (!document.querySelector('.progress-bar')) {
+        const progressBar = document.createElement('div');
+        progressBar.className = 'progress-bar';
+        document.body.appendChild(progressBar);
+    }
+    
+    // Update progress bar on scroll
+    window.addEventListener('scroll', () => {
+        const progressBar = document.querySelector('.progress-bar');
+        if (progressBar) {
+            const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (window.pageYOffset / totalHeight) * 100;
+            progressBar.style.width = progress + '%';
+        }
+    });
+}
+
 // Add active navigation style
 const style = document.createElement('style');
 style.textContent = `
     .nav-link.active {
-        color: #007bff !important;
+        color: #2563eb !important;
     }
 `;
 document.head.appendChild(style);
+
+// Initialize additional professional features
+initializeScrollToTop();
+initializeProgressBar();
 
 console.log('Portfolio website loaded successfully! 🚀');
