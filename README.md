@@ -414,6 +414,282 @@ function initializeProgressBar() {
 - **Bootstrap grid**: Responsive layout system
 - **AOS animations**: Scroll-triggered animations
 
+### Detailed HTML Section Breakdown
+
+#### 🏠 **Hero Section** (`#home`)
+```html
+<section id="home" class="hero-section">
+    <div class="container">
+        <div class="row align-items-center min-vh-100">
+            <div class="col-lg-6">
+                <h1>Rival Moh. Wahyudi</h1>
+                <h2>Data & Machine Learning Enthusiast</h2>
+                <p>Passionate about turning data into actionable insights...</p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary btn-lg">View My Work</a>
+                    <a href="#contact" class="btn btn-outline-light btn-lg">Get In Touch</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+```
+**Purpose**: First impression landing section with personal branding
+**Features**:
+- **Gradient background**: Eye-catching visual design
+- **Call-to-action buttons**: Direct user navigation
+- **Responsive typography**: Scales across all devices
+- **Professional presentation**: Clean, modern layout
+
+#### 👤 **About Section** (`#about`)
+```html
+<section id="about" class="py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="about-content">
+                    <h2>About Me</h2>
+                    <p>Personal background and professional journey...</p>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">3+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+```
+**Purpose**: Personal introduction and professional background
+**Features**:
+- **Two-column layout**: Text content + statistics
+- **Professional stats**: Years of experience, projects completed
+- **Personal narrative**: Story-driven content
+- **Achievement highlights**: Key accomplishments
+
+#### 🛠️ **Skills Section** (`#skills`)
+```html
+<section id="skills" class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="skill-category">
+                    <div class="skill-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h5>Machine Learning</h5>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">TensorFlow</span>
+                        <span class="skill-tag">Scikit-learn</span>
+                    </div>
+                </div>
+                ... <!-- other skill category -->
+            </div>
+        </div>
+    </div>
+</section>
+```
+**Purpose**: Technical expertise showcase organized by category
+**Features**:
+- **Category organization**: ML, Programming, Data Analysis, Tools
+- **Visual icons**: FontAwesome icons for each category
+- **Technology tags**: Specific tools and frameworks
+- **Card-based layout**: Clean, scannable design
+- **Responsive grid**: 4-column desktop, 2-column tablet, 1-column mobile
+
+#### 💼 **Experience Section** (`#experience`)
+```html
+<section id="experience" class="py-5">
+    <div class="container">
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">2021 - Present</div>
+                    <h5>Data Science Journey</h5>
+                    <h6>Learning & Development</h6>
+                    <p>Professional experience and learning milestones...</p>
+                    <div class="timeline-skills">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Machine Learning</span>
+                    </div>
+                </div>
+            </div>
+            ... <!-- Other Expirience Item -->
+        </div>
+    </div>
+</section>
+```
+**Purpose**: Professional timeline and career progression
+**Features**:
+- **Timeline layout**: Chronological experience display
+- **Visual markers**: Timeline dots and connecting lines
+- **Experience details**: Role, duration, responsibilities
+- **Technology tags**: Skills used in each role
+- **Progressive disclosure**: Expandable content sections
+
+#### 🚀 **Projects Section** (`#projects`)
+```html
+<section id="projects" class="py-5 bg-light">
+    <div class="container">
+        <div class="project-categories text-center mb-5">
+            <button class="btn btn-category active" data-category="all">All Projects</button>
+            <button class="btn btn-category" data-category="ml">Machine Learning</button>
+            <button class="btn btn-category" data-category="data-analysis">Data Analysis</button>
+        </div>
+        <div class="row" id="projectsContainer">
+            <!-- Project card-->
+            <div class="col-lg-4 col-md-6 mb-4 project-card" data-category="ml">
+                <div class="project-item">
+                    <div class="project-image">
+                        <img src="images/project_placeholder.jpg" alt="Project">
+                    </div>
+                    <div class="project-content">
+                        <h5>Sales Prediction Model</h5>
+                        <p>Machine learning model for sales forecasting...</p>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Scikit-learn</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="projects/sales-prediction.html" class="btn btn-primary">View Details</a>
+                            <a href="#" class="btn btn-outline-secondary">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            ... <!-- other project -->
+        </div>
+    </div>
+</section>
+```
+**Purpose**: Portfolio showcase with interactive filtering
+**Features**:
+- **Interactive filtering**: Category-based project filtering
+- **Project cards**: Consistent card layout with images
+- **Technology tags**: Stack used for each project
+- **Multiple CTAs**: View details, GitHub links
+- **Responsive grid**: 3-column desktop, 2-column tablet, 1-column mobile
+- **Smooth animations**: Filter transitions with CSS animations
+
+#### 🏆 **Certifications Section** (`#certifications`)
+```html
+<section id="certifications" class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-5" data-aos="fade-up">
+                <h2 class="section-title">Certifications</h2>
+                <p class="section-subtitle">Professional certifications and achievements in data science</p>
+            </div>
+        </div>
+        <!-- categories -->
+        <div class="row mb-4" data-aos="fade-up">
+            <div class="col-lg-12">
+                <div class="certification-categories text-center">
+                    <button class="btn btn-category active" data-category="all">
+                        <i class="fas fa-certificate me-2"></i>
+                        <span>All Certifications</span>
+                    </button>
+                    ... <!-- other button categories -->
+                </div>
+            </div>
+        </div>
+
+        <!-- card certification container -->
+        <div class="certifications-scroll-container">
+            <div class="row flex-nowrap">
+                <div class="col-auto">
+                    <div class="certification-card">
+                        <div class="certification-icon">
+                            <i class="fab fa-google"></i>
+                        </div>
+                        <h6>Google Data Analytics</h6>
+                        <p>Professional Certificate</p>
+                        <div class="certification-date">2023</div>
+                    </div>
+                    ... <!-- other certification -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+```
+**Purpose**: Professional certifications and achievements
+**Features**:
+- **Horizontal scrolling**: Space-efficient certification display
+- **Brand icons**: Recognizable certification provider logos
+- **Credential details**: Certificate name, provider, date
+- **Card design**: Consistent styling with other sections
+- **Touch-friendly**: Optimized for mobile swiping
+
+#### 📞 **Contact Section** (`#contact`)
+```html
+<section id="contact" class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-5" data-aos="fade-up">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">Let's connect and discuss data science opportunities</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <div>
+                            <h5>LinkedIn</h5>
+                            <p>Connect with me professionally</p>
+                            <a href="https://linkedin.com/in/rivalmohwahyudi/" class="btn btn-outline-primary btn-sm">View LinkedIn</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            ... <!-- other social media -->
+        </div>
+    </div>
+</section>
+```
+**Purpose**: Contact form and communication channels
+**Features**:
+- **Functional contact form**: Name, email, message fields
+- **Form validation**: Required field validation
+- **Contact information**: Email, phone, social links
+- **Two-column layout**: Form + contact details
+- **Professional presentation**: Clean, accessible design
+
+#### 🔗 **Footer Section**
+```html
+<footer class="bg-dark text-white py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <p>&copy; 2024 Rival Moh. Wahyudi. All rights reserved.</p>
+            </div>
+            <div class="col-md-6 text-end">
+                <div class="social-links">
+                    <a href="#" class="text-white me-3"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-github"></i></a>
+                    <a href="#" class="text-white"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+```
+**Purpose**: Site footer with copyright and social links
+**Features**:
+- **Copyright information**: Legal attribution
+- **Social media links**: LinkedIn, GitHub, Twitter
+- **Simple layout**: Clean, unobtrusive design
+- **Responsive alignment**: Left-aligned copyright, right-aligned social links
+
 ## 🎮 Interactive Features
 
 ### 1. **Project Filtering**
